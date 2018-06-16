@@ -1,20 +1,25 @@
+
 const path= require('path')
-module.export = {
+
+module.exports = {
+    mode:'development',
     entry: {
-        app:'./src/app.js'
+       app:[ 'babel-polyfill',
+             './src/app.js'
+            ]
 
     },
     output: {
-        path: path.resolve(__dirname, build),
+        path: path.resolve(__dirname, 'build'),
         filename:'app.bundle.js'
     },
     module: {
-        loaders:[{
+        rules:[{
             test: /\.js?$/,
             exclude:/node_modules/,
             loader:'babel-loader',
             query:{
-                presets:['env']
+                presets:['env','stage-0']
             }
         }]
     }
